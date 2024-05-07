@@ -14,11 +14,12 @@ export default function Header() {
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
         <div>
-          <Link className="main-nav-item">Username</Link>
+          <Link className="main-nav-item" to="./User">Username</Link>
           <i className="fa fa-user-circle"></i>
           <Link className="main-nav-item" to="./SignIn">
             Sign In
           </Link>
+          <i className="fa fa-sign-out"></i>
           <Link className="main-nav-item" to="./SignOut">
             Sign Out
           </Link>
