@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header>
       <nav className="main-nav">
-        <Link className="main-nav-logo" to="./">
+        <Link className="main-nav-logo" to="./Home">
           <img
             className="main-nav-logo-image"
             src={logo}
@@ -16,7 +16,12 @@ export default function Header() {
         <div>
           <Link className="main-nav-item">Username</Link>
           <i className="fa fa-user-circle"></i>
-          <Link className="main-nav-item"  to="./SignIn" >Sign In</Link>
+          <Link className="main-nav-item" to="./SignIn">
+            Sign In
+          </Link>
+          <Link className="main-nav-item" to="./SignOut">
+            Sign Out
+          </Link>
         </div>
       </nav>
     </header>

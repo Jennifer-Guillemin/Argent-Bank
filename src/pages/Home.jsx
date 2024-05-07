@@ -1,12 +1,12 @@
-import Header from "../components/Header"
-import Banner from "../components/Banner"
-import FeatureItem from "../components/FeatureItem"
-import Footer from "../components/Footer"
-import Chat from "../assets/icon-chat.webp"
-import Money from "../assets/icon-money.webp"
-import Security from "../assets/icon-security.webp"
+import Header from "../components/Header";
+import Banner from "../components/Banner";
+import FeatureItem from "../components/FeatureItem";
+import Footer from "../components/Footer";
+import Chat from "../assets/icon-chat.webp";
+import Money from "../assets/icon-money.webp";
+import Security from "../assets/icon-security.webp";
 
-export default function Home () {
+export default function Home() {
   return (
     <main>
       <Header />
@@ -32,8 +32,7 @@ export default function Home () {
           description="We use top of the line encryption to make sure your data and money is always safe."
         />
       </section>
-      <Footer/>
+      <Footer />
     </main>
   );
 }
-
