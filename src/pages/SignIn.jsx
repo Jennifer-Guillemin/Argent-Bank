@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import "../styles/signin.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 export default function SignIn() {
   return (
     <div>
-      <Header />
     <main className="main bg-dark">
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
@@ -31,7 +28,6 @@ export default function SignIn() {
         </form>
       </section>
     </main>
-    <Footer />
     </div>
   );
 }

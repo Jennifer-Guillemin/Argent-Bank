@@ -1,7 +1,5 @@
-import Header from "../components/Header";
 import Banner from "../components/Banner";
 import FeatureItem from "../components/FeatureItem";
-import Footer from "../components/Footer";
 import Chat from "../assets/icon-chat.webp";
 import Money from "../assets/icon-money.webp";
 import Security from "../assets/icon-security.webp";
@@ -9,7 +7,6 @@ import Security from "../assets/icon-security.webp";
 export default function Home() {
   return (
     <main>
-      <Header />
       <Banner />
       <section className="features">
         <h2 className="sr-only">Features</h2>
@@ -32,7 +29,6 @@ export default function Home() {
           description="We use top of the line encryption to make sure your data and money is always safe."
         />
       </section>
-      <Footer />
     </main>
   );
 }

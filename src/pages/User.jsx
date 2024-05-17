@@ -1,15 +1,14 @@
 import "../styles/user.css";
-import Header from "../components/Header";
 import Account from "../components/Account";
-import Footer from "../components/Footer";
+import EditButton from "../components/EditButton";
 
 export default function User() {
   return (
     <div>
-      <Header />
       <main className="main bg-dark">
         <div className="header">
           <h1>Welcome back</h1>
+          <EditButton />
         </div>
         <h2 className="sr-only">Accounts</h2>
         <Account
@@ -28,7 +27,6 @@ export default function User() {
           description="Current Balance"
         />
       </main>
-      <Footer />
     </div>
   );
 }

@@ -1,3 +1,6 @@
+import PropTypes from "prop-types";
+import Button from "../components/Button";
+
 export default function Account({ title, amount, description }) {
   return (
     <section className="account">
@@ -7,8 +10,14 @@ export default function Account({ title, amount, description }) {
         <p className="account-amount-description">{description}</p>
       </div>
       <div className="account-content-wrapper cta">
-        <button className="transaction-button">View transactions</button>
+        <Button className="transaction-button">View transactions</Button>
       </div>
     </section>
   );
 }
+
+Account.propTypes = {
+  title: PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
