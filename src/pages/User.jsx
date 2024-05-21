@@ -10,6 +10,7 @@ export default function User() {
             const response = await fetch("http://localhost:3001/api/v1/user/profile", {
             method: "POST",
                 headers: {
+                    // eslint-disable-next-line no-use-before-define
                     "Authorization": `Bearer ${token}`
                 }
             })

@@ -1,4 +1,6 @@
 import React from "react";
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./styles/header.css";
@@ -17,6 +19,7 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
+     <Provider store={store}> {/* Envelopper l'application avec Provider */}
     <Router>
     <Header />
       <Routes>
@@ -28,5 +31,6 @@ root.render(
       </Routes>
       <Footer />
     </Router>
+    </Provider>
   </React.StrictMode>
 );
