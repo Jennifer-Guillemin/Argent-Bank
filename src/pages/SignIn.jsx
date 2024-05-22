@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLogIn } from "../redux/reducers/userAuthSlice";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import "../styles/signin.css";
@@ -10,6 +12,7 @@ export default function SignIn() {
   const [checkBox, setCheckBox] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const LogIn = async (e) => {
     e.preventDefault();
@@ -21,7 +24,7 @@ export default function SignIn() {
       });
       const data = await response.json();
       const token = data.body.token;
-      console.log(token);
+      dispatch(setLogIn({token}))
       navigate("/user");
     } catch (err) {
       console.log(err);

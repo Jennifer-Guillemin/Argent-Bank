@@ -11,7 +11,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import User from "./pages/User";
-import SignOut from "./pages/SignOut";
+import EditUser from "./pages/EditUser";
 import Footer from "./components/Footer";
 
 const container = document.getElementById("root");
@@ -26,7 +26,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/user" element={<User />} />
-        <Route path="/signout" element={<SignOut />} />
+        <Route path="/edituser" element={<EditUser />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
