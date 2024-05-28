@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function FeatureItem({ logo, altText, title, description }) {
   return (
     <article className="feature-item">
@@ -7,3 +9,11 @@ export default function FeatureItem({ logo, altText, title, description }) {
     </article>
   );
 }
+
+/* Définition des types des props */
+FeatureItem.propTypes = {
+  logo: PropTypes.string.isRequired,
+  altText: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};

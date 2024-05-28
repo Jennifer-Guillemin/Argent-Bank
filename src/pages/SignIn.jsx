@@ -32,7 +32,6 @@ export default function SignIn() {
   };
 
   return (
-    <div>
       <main className="main bg-dark">
         <section className="sign-in-content">
           <i className="fa fa-user-circle sign-in-icon"></i>
@@ -67,6 +66,5 @@ export default function SignIn() {
           </form>
         </section>
       </main>
-    </div>
   );
 }

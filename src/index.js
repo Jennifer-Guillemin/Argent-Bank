@@ -1,8 +1,13 @@
 import React from "react";
-import { Provider } from 'react-redux';
-import store from './redux/store';
+import { Provider, useSelector } from "react-redux";
+import store from "./redux/store";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import "./styles/header.css";
 import "./styles/home.css";
 import "./styles/banner.css";
@@ -14,23 +19,38 @@ import User from "./pages/User";
 import EditUser from "./pages/EditUser";
 import Footer from "./components/Footer";
 
+/* Création de RoutesWrapper pour gérer les routes avec useSelector */
+const RoutesWrapper = () => {
+  const token = useSelector((state) => state.userAuth.token);
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route
+        path="/user"
+        element={token ? <User /> : <Navigate to="/signin" />}
+      />
+      <Route
+        path="/edituser"
+        element={token ? <EditUser /> : <Navigate to="/signin" />}
+      />
+      <Route path="*" element={<Home />} />
+    </Routes>
+  );
+};
+
 const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-     <Provider store={store}> {/* Envelopper l'application avec Provider */}
-    <Router>
-    <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/edituser" element={<EditUser />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <Provider store={store}>
+      {/* Envelopper l'application avec Provider */}
+      <Router>
+        <Header />
+        <RoutesWrapper />
+        <Footer />
+      </Router>
     </Provider>
   </React.StrictMode>
 );

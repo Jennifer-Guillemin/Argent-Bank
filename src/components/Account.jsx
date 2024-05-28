@@ -16,6 +16,7 @@ export default function Account({ title, amount, description }) {
   );
 }
 
+/* Définition des types des props */
 Account.propTypes = {
   title: PropTypes.string.isRequired,
   amount: PropTypes.string.isRequired,
