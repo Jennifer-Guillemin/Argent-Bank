@@ -5,7 +5,7 @@ import logo from "../assets/argentBankLogo.webp";
 
 export default function Header() {
   const token = useSelector((state) => state.userAuth.token);
-  const profile = useSelector((state) => state.profile);
+  const profile = useSelector((state) => state.profil);
   const dispatch = useDispatch();
 
   return (

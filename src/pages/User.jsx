@@ -7,7 +7,7 @@ import EditButton from "../components/EditButton";
 
 export default function User() {
   const token = useSelector((state) => state.userAuth.token);
-  const profile = useSelector((state) => state.profile);
+  const profile = useSelector((state) => state.profil);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,6 +23,7 @@ export default function User() {
           }
         );
         const data = await response.json();
+        console.log(data);
         dispatch(setGetProfile({ data }));
       } catch (err) {
         console.log(err);

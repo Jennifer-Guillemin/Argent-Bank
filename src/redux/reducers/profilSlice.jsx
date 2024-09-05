@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const profilSlice = createSlice({
-  name: "profile",
+  name: "profil",
   initialState: {
     email: "",
     firstName: "",
@@ -10,7 +10,7 @@ const profilSlice = createSlice({
   },
 
   reducers: {
-     /* Reducer pour définir le profil de l'utilisateur */ 
+    /* Reducer pour définir le profil de l'utilisateur */
     setGetProfile: (state, action) => {
       state.email = action.payload.data.body.email;
       state.firstName = action.payload.data.body.firstName;
