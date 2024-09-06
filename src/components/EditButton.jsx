@@ -1,26 +1,106 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setEditProfile } from "../redux/reducers/profilSlice";
+import TextInput from "../components/TextInput";
 import Button from "../components/Button";
-import EditUser from "../pages/EditUser";
 
-export default function EditButton({ profil }) {
+export default function EditButton() {
+  const token = useSelector((state) => state.userAuth.token);
+  const profil = useSelector((state) => state.profil);
   const [isEditing, setIsEditing] = useState(false);
+  const [newUserName, setNewUserName] = useState(profil.userName);
+  const [firstName, setFirstName] = useState(profil.firstName || "");
+  const [lastName, setLastName] = useState(profil.lastName || "");
+  const [error, setError] = useState("");
 
-  const handleEditClick = () => {
-    setIsEditing(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setNewUserName(profil.userName);
+    setFirstName(profil.firstName);
+    setLastName(profil.lastName);
+  }, [profil]);
+
+  const editUserName = async (e) => {
+    e.preventDefault();
+    if (!newUserName) {
+      setError("The field cannot be empty.");
+      return;
+    }
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/v1/user/profile",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ userName: newUserName }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to update username");
+      }
+      dispatch(setEditProfile(newUserName));
+      setIsEditing(false);
+      setError("");
+    } catch (err) {
+      console.log(err);
+      setError("Error updating username.");
+    }
   };
 
-  const handleCancel = () => {
-    setIsEditing(false);
+  const cancelEdit = () => {
+    setNewUserName(profil.userName); // Réinitialiser le nom
+    setIsEditing(false); // fermer le mode edition
   };
 
   return (
     <div>
-      {!isEditing ? (
-        <Button className="edit-button" onClick={handleEditClick}>
-          Edit Name
-        </Button>
+      {isEditing ? (
+        <div>
+          <TextInput
+            className="input-edit"
+            label="User name :"
+            id="username"
+            type="text"
+            autoComplete="username"
+            onChange={(e) => {
+              setNewUserName(e.target.value);
+              setError("");
+            }}
+            value={newUserName}
+          />
+          <TextInput
+            className="input-edit disabled-input"
+            label="First name :"
+            id="firstName"
+            type="text"
+            value={firstName}
+            disabled
+          />
+          <TextInput
+            className="input-edit disabled-input"
+            label="Last name :"
+            id="lastName"
+            type="text"
+            value={lastName}
+            disabled
+          />
+          {error && <p className="error-message">{error}</p>}
+          <br />
+          <Button className="edit-button" onClick={editUserName}>
+            Save
+          </Button>
+          <Button className="edit-button" type="button" onClick={cancelEdit}>
+            Cancel
+          </Button>
+        </div>
       ) : (
-        <EditUser profile={profil} onCancel={handleCancel} />
+        <Button className="edit-button" onClick={() => setIsEditing(true)}>
+          Edit Username
+        </Button>
       )}
     </div>
   );

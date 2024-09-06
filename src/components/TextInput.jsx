@@ -8,6 +8,7 @@ export default function TextInput({
   autoComplete,
   onChange,
   value,
+  disabled,
 }) {
   return (
     <div className={className}>
@@ -18,6 +19,7 @@ export default function TextInput({
         autoComplete={autoComplete}
         onChange={onChange}
         value={value}
+        disabled={disabled}
       />
     </div>
   );
@@ -26,9 +28,11 @@ export default function TextInput({
 /* Définition des types des props */
 TextInput.propTypes = {
   className: PropTypes.string,
-  id: PropTypes.string.isRequired, 
-  label: PropTypes.string.isRequired, 
-  type: PropTypes.string, 
-  autoComplete: PropTypes.string, 
-  onChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  autoComplete: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  disabled: PropTypes.bool,
 };
