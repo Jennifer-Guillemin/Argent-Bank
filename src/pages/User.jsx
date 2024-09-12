@@ -24,7 +24,7 @@ export default function User() {
         );
         const data = await response.json();
         console.log(data);
-        dispatch(setGetProfile({ data }));
+        dispatch(setGetProfile({ data })); // Envoie les données du profil à Redux
       } catch (err) {
         console.log(err);
       }

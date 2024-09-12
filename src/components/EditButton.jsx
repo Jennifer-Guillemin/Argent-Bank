@@ -7,6 +7,8 @@ import Button from "../components/Button";
 export default function EditButton() {
   const token = useSelector((state) => state.userAuth.token);
   const profil = useSelector((state) => state.profil);
+
+  // Déclare des états locaux pour gérer l'édition et les champs du formulaire
   const [isEditing, setIsEditing] = useState(false);
   const [newUserName, setNewUserName] = useState(profil.userName);
   const [firstName, setFirstName] = useState(profil.firstName || "");
@@ -15,15 +17,18 @@ export default function EditButton() {
 
   const dispatch = useDispatch();
 
+  // Met à jour les états locaux lorsque le profil utilisateur change
   useEffect(() => {
     setNewUserName(profil.userName);
     setFirstName(profil.firstName);
     setLastName(profil.lastName);
   }, [profil]);
 
+  // Fonction pour éditer le nom d'utilisateur
   const editUserName = async (e) => {
     e.preventDefault();
     if (!newUserName) {
+      console.log("Field is empty");
       setError("The field cannot be empty.");
       return;
     }
@@ -42,9 +47,10 @@ export default function EditButton() {
       if (!response.ok) {
         throw new Error("Failed to update username");
       }
-      dispatch(setEditProfile(newUserName));
+      dispatch(setEditProfile(newUserName)); // Met à jour le profil dans Redux
       setIsEditing(false);
       setError("");
+      console.log(`Username updated to: ${newUserName}`);
     } catch (err) {
       console.log(err);
       setError("Error updating username.");

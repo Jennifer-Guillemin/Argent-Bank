@@ -27,13 +27,13 @@ export default function SignIn() {
       if (!response.ok) {
         // Si la réponse n'est pas OK, on suppose que les informations sont incorrectes
         const errorData = await response.json();
-        setErrorMessage(errorData.message || "Invalid email or password"); // Affiche le message d'erreur venant du serveur ou un message par défaut
+        setErrorMessage(errorData.message || "Invalid email or password");
         return;
       }
 
       const data = await response.json();
       const token = data.body.token;
-      dispatch(setLogIn({ token }));
+      dispatch(setLogIn({ token })); // Envoyer le token à Redux
       navigate("/user");
     } catch (err) {
       console.log(err);
