@@ -25,7 +25,6 @@ export default function SignIn() {
       });
 
       if (!response.ok) {
-        // Si la réponse n'est pas OK, on suppose que les informations sont incorrectes
         const errorData = await response.json();
         setErrorMessage(errorData.message || "Invalid email or password");
         return;
