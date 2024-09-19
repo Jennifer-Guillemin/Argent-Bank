@@ -41,7 +41,6 @@ export default function User() {
         </h1>
         <EditButton />
       </div>
-      <h2 className="sr-only">Accounts</h2>
       <Account
         title="Argent Bank Checking (x8349)"
         amount="$2,082.79"

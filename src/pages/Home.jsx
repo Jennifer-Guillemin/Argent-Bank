@@ -24,7 +24,7 @@ export default function Home() {
         />
         <FeatureItem
           logo={Security}
-          altText="Security"
+          altText="Security logo"
           title="Security you can trust"
           description="We use top of the line encryption to make sure your data and money is always safe."
         />
